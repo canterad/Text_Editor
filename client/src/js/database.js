@@ -21,6 +21,8 @@ const initdb = async () =>
 export const putDb = async (content) => {
   console.log('PUT to the database');
 
+  // Set the id value to 1 so the put operation will update the record in the database that has the id
+  // key value of 1.
   const id = 1;
 
   // Create a connection to the database and the version we want to use.
