@@ -26,8 +26,14 @@ export default class {
     // Fall back to localStorage if nothing is stored in indexeddb, and if neither is available, set the value to header.
     getDb().then((data) => {
 
-      // Get the jate data from the data object.
-      let strData = data[0].jate;
+      // Set initial data value to an empty string.
+      let strData = "";
+      
+      // If we have data then set the data string value.
+      if (data.length > 0)
+      {
+        strData += data[0].jate;
+      }
 
       console.info('Loaded data from IndexedDB, injecting into editor');
       this.editor.setValue(strData || localData || header);
