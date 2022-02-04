@@ -21,6 +21,8 @@ const initdb = async () =>
 export const putDb = async (content) => {
   console.log('PUT to the database');
 
+  const id = 1;
+
   // Create a connection to the database and the version we want to use.
   const jateDb = await openDB('jate', 1);
 
@@ -29,13 +31,9 @@ export const putDb = async (content) => {
 
   // Open up the desired object store.  
   const store = tx.objectStore('jate');
-
-  ////////////////////////////////////////////////////////////////////
-  // Use the put() method.  Match the id and update the content.
-  // NEED TO CHECK TO SEE IF THIS IS WHAT IS PASSES.
-  // THIS SHOULD WORK, DON'T NEED TO USE THE ID FOR PUT.
-  /////////////////////////////////////////////////////////////////////
-  const request = store.put({ jate: content });
+  
+  // Perform the put operation passing in the id value and content.
+  const request = store.put({ id: id, jate: content });
 
   // Get confirmation of the request.  
   const result = await request;
